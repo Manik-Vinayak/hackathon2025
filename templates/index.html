@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Admission Form</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">🏛️ <strong>AdmissionPro</strong></div>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Student Admission Form</h2>
+
+    
+
+    <form action="/" method="POST" enctype="multipart/form-data">
+      <section class="section">
+        <h3>Personal Details</h3>
+        <div class="grid">
+          <div class="field">
+            <label>Full Name</label>
+            <input type="text" name="full_name" placeholder="Enter your full name" required />
+          </div>
+          <div class="field">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="Enter your email" required />
+          </div>
+          <div class="field">
+            <label>Date of Birth</label>
+            <input type="date" name="dob" required />
+          </div>
+          <div class="field">
+            <label>Gender</label>
+            <label><input type="radio" name="gender" value="Male" required /> Male</label>
+            <label><input type="radio" name="gender" value="Female" required /> Female</label>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3>Academic Information</h3>
+        <div class="grid">
+          <div class="field">
+            <label>Previous School</label>
+            <input type="text" name="school" placeholder="Enter previous school name" required />
+          </div>
+          <div class="field">
+            <label>Last Grade Completed</label>
+            <input type="text" name="grade" placeholder="Enter last grade completed" required />
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3>Upload Documents</h3>
+        <div class="field">
+          <label>Upload ID Proof</label>
+          <input type="file" name="id_proof" required />
+        </div>
+        <div class="field">
+          <label>Upload Academic Certificates</label>
+          <input type="file" name="certificates" required />
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" name="agree" required />
+          <label>I agree to the terms and conditions</label>
+        </div>
+      </section>
+
+      <button class="submit-btn" type="submit">Submit Application</button>
+    </form>
+    <!-- Flash messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+  </main>
+
+  <footer class="footer">
+    <div>
+      <h4>Contact Us</h4>
+      <p>123 Admission Lane, EduCity</p>
+      <p>Email: <a href="mailto:info@admissionpro.com">info@admissionpro.com</a></p>
+      <p>Phone: (123) 456-7890</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Help Center</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
